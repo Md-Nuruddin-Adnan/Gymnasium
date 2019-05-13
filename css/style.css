@@ -22,12 +22,7 @@ ul, li {
 a, a:hover {
   text-decoration: none;
 }
-
-/* font-family: 'Oswald', sans-serif; */
-
 /* basic css end */
-
-
 
 /* main css start */
 body {
@@ -46,9 +41,14 @@ body {
   z-index: 999;
 }
 
-header nav {
+#header.position-fixed  {
+  top: 0;
+  background: rgba(53, 53, 53, 0.8);
+}
+
+#header .navbar {
   background: rgba(53, 53, 53, 0.25);
-  height: 50px;
+  padding: 0;
 }
 
 .navbar .container,
@@ -70,17 +70,24 @@ header nav {
   transform: skewX(-30deg);
 }
 
+#header.position-fixed .navbar-brand {
+  top: 0;
+  padding: 0 30px;
+}
+
 .navbar-brand img {
   display: inline-block;
   transform: skewX(30deg)
 }
 
-.navbar-toggler {
+#header .navbar-toggler {
   margin: 0 0 0 auto;
-  background-color: #fff
+  border-color: #fff;
+  background: #fff;
 }
 
-.navbar-nav > .nav-item > .nav-link {
+.navbar-nav > .nav-item > .nav-link,
+.navbar-nav > .nav-item > .nav-link:focus {
   color: #f1f1f1;
   font-size: 14px;
   font-family: 'Oswald', sans-serif;
@@ -110,13 +117,14 @@ header nav {
 }
 
 .navbar-nav > .nav-item > .nav-link:hover,
-.navbar-nav .nav-item.active .nav-link {
+.navbar-nav .nav-item .nav-link.active {
   background-color: #fff;
   color: #353535;
 }
 
-.navbar-nav .nav-item.active .nav-link::after {
+.navbar-nav > .nav-item > .nav-link.active::after {
   width: 100%;
+  opacity: 1;
 }
 /* navbar end */
 
@@ -241,6 +249,7 @@ header nav {
   display: inline-block;
   padding: 5px;
 }
+
 .slick-dots{
   position: absolute;
   left: 50%;
@@ -248,6 +257,7 @@ header nav {
   transform: translateX(-50%);
   text-align: center;
 }
+
 .slick-dots button{
   font-size: 0;
   width: 12px;
@@ -361,8 +371,6 @@ header nav {
 
 .glry-box:hover .glry-overlay {
   opacity: 1;
-  /* width: 90%;
-  height: 90%; */
   transform: translate(-50%, -50%) scale(.9);
 }
 /* gallery part end */
@@ -385,7 +393,7 @@ figure {
   right: 5%;
   transform: translateY(-50%);
 }
-
+ 
 .team_overlay ul li i {
   color: #fffefe;
   width: 30px;
@@ -421,9 +429,9 @@ figcaption {
 }
 
 figure:hover figcaption {
-  border-left: 1px solid rgba(221, 221, 221,1);
-  border-right: 1px solid rgba(221, 221, 221,1);
-  border-bottom: 1px solid rgba(221, 221, 221,1);
+  border-left: 1px solid rgba(221, 221, 221, 1);
+  border-right: 1px solid rgba(221, 221, 221, 1);
+  border-bottom: 1px solid rgba(221, 221, 221, 1);
 }
 
 figcaption h3,
@@ -551,8 +559,7 @@ figure:hover figcaption p {
 }
 
 #membership .package ul {
-  min-height: 250px;
-  padding-top: 20px;
+  padding: 20px 0;
 }
 
 #membership .package ul li {
@@ -560,7 +567,7 @@ figure:hover figcaption p {
   font-weight: 400;
   font-size: 14px;
   color: #555555;
-  padding-top: 20px;
+  padding: 10px;
 }
 
 #membership .package a {
@@ -707,7 +714,7 @@ figure:hover figcaption p {
 #sister-logo {
   padding: 75px 0;
 }
-
+ 
 #sister-logo img {
   background: #f1f1f1;
   display: block;
@@ -885,3 +892,26 @@ footer .ftr_bottom p span {
   z-index: 999999;
 }
 /* footer part end */
+
+/* back to top button start */
+.top-btn {
+  position: fixed;
+  width: 1.75em;
+  height: 1.75em;
+  line-height: 1.75em;
+  font-size: 1.75em;
+  bottom: 2em;
+  right: 2em;
+  z-index: 999;
+  color: #fff;
+  background: #e23e38;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+}
+
+.top-btn:hover {
+  background: #181818;
+  transition: all 0.2s ease-in-out;
+}
+/*back to top button ends */

@@ -1,12 +1,53 @@
 $(function(){
 
+  "use strict";
+    
+  var $nav = $('#header');
+  var $dis = $nav.offset().top;
+  var $htmlbody = $('html,body');
+
+   $(window).scroll(function () {
+      var $scrolling = $(this).scrollTop();
+     if ($scrolling >= $dis) {
+          $nav.addClass('position-fixed');
+      } else {
+          $nav.removeClass('position-fixed');
+      }
+  })
+
+  //smooth scroll 
+  $('.navbar-nav .nav-item .nav-link').on('click', function () {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+          $htmlbody.animate({
+              scrollTop: target.offset().top - 65
+          }, 1000);
+          return false;
+      }
+    }
+  });
+
+
   //banner slide
   $('.banner-slick').slick({
     dots: true, 
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 2000,
     prevArrow: '<span class="prev-arrow"><i class="fa fa-angle-left"></i></span>',
     nextArrow: '<span class="next-arrow"><i class="fa fa-angle-right"></i></span>',
+    responsive: [
+      { 
+        breakpoint: 770,
+        settings: {
+        arrows: false,
+        slidesToShow: 1,
+        slidesToScroll: 1, 
+        }
+      }, 
+      
+    ]
   });
 
   //youtube video
@@ -29,7 +70,7 @@ $(function(){
     slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
-      {
+      { 
         breakpoint: 992,
         settings: {
           slidesToShow: 3,
@@ -62,7 +103,7 @@ $(function(){
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 992,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
@@ -116,6 +157,22 @@ $(function(){
     ]
   });
   
+  //back to top button
+   $(".top-btn").click(function(){
+      $($htmlbody).animate({
+          "scrollTop" : "0"
+      }, 500)
+  });
+  //top button fade in fade out
+  $(window).scroll(function(){
+      var scrollValue = $(this).scrollTop();
+
+      if(scrollValue >= 500){
+          $(".top-btn").fadeIn();
+      }else{
+       $(".top-btn").fadeOut();
+      }
+  });
     
  
 }); 
