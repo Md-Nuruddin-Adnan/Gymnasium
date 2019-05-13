@@ -33,7 +33,7 @@ $(function(){
   //banner slide
   $('.banner-slick').slick({
     dots: true, 
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 2000,
     prevArrow: '<span class="prev-arrow"><i class="fa fa-angle-left"></i></span>',
     nextArrow: '<span class="next-arrow"><i class="fa fa-angle-right"></i></span>',
